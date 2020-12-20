@@ -1,4 +1,7 @@
 class ChirpsController < SecuredController
+
+    skip_before_action :authorize_request, only: [:index, :show]
+    
     def index
       chirps = Chirp.all
       render json: chirps
